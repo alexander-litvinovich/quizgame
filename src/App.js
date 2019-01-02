@@ -1,25 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import outerData from './datamock.json';
-import Card from './components/Card/Card';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+
+import Splash from './routes/Splash';
+import Settings from './routes/Settings';
+import Menu from './routes/Menu';
+import Game from './routes/Game';
+import Rules from './routes/Rules';
+import RoundEnd from './routes/RoundEnd';
+
 
 class App extends Component {
+  
+ /* previousLocation = this.props.location;
 
-  questions = {};
+  componentWillUpdate(nextProps) {
+    let { location } = this.props;
 
-  componentDidMount = () => {
-    //console.log(outerData);
+    // set previousLocation if props.location is not modal
+    if (
+      nextProps.history.action !== "POP" &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
   }
-
+  */
   render() {
-    console.log(this.questions);
+   
     return (
       <div className="App">
-        <Card question={1+1} description="Дай четкий ответ!"></Card>
-        <Card question="Соль или сахар?" description="Дай четкий ответ!"></Card>
-        <Card question="Один или ноль?" description="Дай четкий ответ!"></Card>
-        <Card />
+        <Route path="/" exact component={Splash} />
+        <Route path="/Game" component={Game} />
+        <Route path="/Menu" component={Menu} />
+        <Route path="/Rules" component={Rules} />
+        <Route path="/Settings" component={Settings} />
+        <Route path="/RoundEnd" component={RoundEnd} />
       </div>
     );
   }
