@@ -5,9 +5,8 @@ import './Splash.css';
 class Splash extends Component{
 
     render(){
-        let history = this.props.history;
-        setTimeout(function(){
-            history.push('/Menu')
+        setTimeout(()=>{
+            this.props.history.push('/Menu');
         }, 1000);
 
         return( 

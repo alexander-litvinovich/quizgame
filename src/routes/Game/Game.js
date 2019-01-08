@@ -7,24 +7,30 @@ class Game extends Component{
     
     
     cards = outerData.words;
-    
-    state = {
-      questionQuantity: 3,
-      questionIndex: -1,
-      gameOver: false,
-      timeTrial: true,
-      right: 0,
-      skipped: 0,
-      time: 0,
-      timeLimit: 30,
-    }
-    
-    initialState = {};
-    
     cardsQueue = [];
+
+    state = {};
+    initialState = {};    
+    
     
     constructor(props){
       super(props);
+
+      let settings = this.loadSettings();
+      this.state = {
+        /* Settings */
+        timeTrial: settings.timeTrial,
+        timeLimit: settings.timeLimit || 30,
+        cardsQuantity:  settings.cardsQuantity || 3,
+        
+        /* Game state */
+        gameStart: false,
+        right: 0,
+        skipped: 0,
+        time: 0,
+        timerID: 0,
+      };
+
       this.initialState = {...this.state};
       this.right = this.right.bind(this);
       this.skip = this.skip.bind(this);
@@ -34,32 +40,89 @@ class Game extends Component{
     componentDidMount(){
       this.resetCards();
     }
+
+    startTimer = ()=>{
+      
+      this.setState({
+        timerID: window.setInterval(this.tick, 1000),
+        gameStart: true
+      },()=>{
+        console.log(this.state)
+      });
+    }
+
+    componentWillUnmount(){
+      clearInterval(this.state.timerID);
+    }
     
+    tick = () => {
+      let {time, timeTrial, timeLimit} = this.state;
+      
+      if(timeTrial && time === timeLimit){
+        return this.roundEnd();
+      }
+
+      this.setState({time : time+1});
+      
+    }
     
+    loadSettings = function(){
+      return JSON.parse(localStorage.getItem("gameSettings")) || [];
+    }
+
+    roundEnd = function(){
+      let roundStat = {
+        timeStamp: Date.now(),
+        time: this.state.time, 
+        timeTrial: this.state.timeTrial, 
+        timeLimit: this.state.timeLimit,
+        right: this.state.right,
+        skipped: this.state.skipped,
+      };
+
+      let stats = JSON.parse(localStorage.getItem("gameStats")) || [];
+      stats.push(roundStat);
+
+      localStorage.setItem("gameStats", JSON.stringify(stats));
+      this.props.history.push('/RoundEnd');
+    }
+
     resetCards = function(){
+      if(this.state.timeTrial) clearInterval(this.state.timerID);
       this.cards.sort(() => Math.random() - 0.5);
-      this.cardsQueue = this.cards.splice(0, this.state.questionQuantity);
+      if(this.state.timeTrial === false) {
+        this.cardsQueue = this.cards.splice(0, this.state.cardsQuantity);
+      } else {
+        this.cardsQueue = this.cards;
+      }
+
       console.log(this.cardsQueue);
       this.setState(this.initialState);
     }
     
-    right = function(cardId){
-      this.cardsQueue.splice(cardId,1);
-      this.setState({right: this.state.right+1});
-      console.log(this.state);
+    right = function(){
+      if(!this.state.gameStart) this.startTimer();
+      this.cardsQueue.shift();
+      this.setState({right: this.state.right+1},()=>{
+        if(this.cardsQueue.length === 0) this.roundEnd();
+      });
     };
     
-    skip = function(cardId){
-      this.cardsQueue.splice(cardId,1);
+    skip = function(){
+      if(!this.state.gameStart) this.startTimer();
+      let currentCard = this.cardsQueue.shift();
+      this.cardsQueue.push(currentCard);
       this.setState({skipped: this.state.skipped+1});
-      console.log(this.state);
     };
     
     render() {
       
       return (      
           <div className="game">
-              <div className="timer"> </div>
+              <div className="params">
+                timeLimit: {this.state.timeTrial===true?'true':'false'}
+              </div>
+              <div className="timer">{this.state.time} sec. / {this.state.timeLimit} sec.</div>
     
               {this.cardsQueue.map((card, i)=>{
               let {word, image, category, tabooWords} = card;
