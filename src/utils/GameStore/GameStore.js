@@ -1,4 +1,5 @@
 export default class GameStore{
+
     static loadSettings = function(){
         return JSON.parse(localStorage.getItem("gameSettings")) || [];
     }
