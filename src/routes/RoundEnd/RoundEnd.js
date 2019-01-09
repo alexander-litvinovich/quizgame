@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import GameStore from './../../utils/GameStore';
 import './RoundEnd.css';
 
 class RoundEnd extends Component{
@@ -7,17 +8,12 @@ class RoundEnd extends Component{
 
     constructor(props){
         super(props);
-        this.stats = JSON.parse(localStorage.getItem("gameStats")) || [];
-
+        this.stats = GameStore.loadStats();
     }
 
     state = {
                 right: 1,
                 timeLimit: 1
-    }
-
-    clearStats = function(){
-        localStorage.removeItem("gameStats");
     }
 
     render(){
@@ -49,7 +45,7 @@ class RoundEnd extends Component{
                         })
                     }
                 </ul>
-                <button className="clearStats" onClick={this.clearStats}>Clear statistics</button>
+                <button className="clearStats" onClick={GameStore.clearStats}>Clear statistics</button>
             </div>
         );
     }

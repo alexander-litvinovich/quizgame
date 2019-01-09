@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Settings.css';
+import GameStore from './../../utils/GameStore';
 
 class Settings extends Component{
 
@@ -9,7 +10,7 @@ class Settings extends Component{
     constructor(props){
         super(props);
 
-        let settings = this.loadSettings();
+        let settings = GameStore.loadSettings();
         console.log(settings)
         this.state = {
             /* Settings */
@@ -19,23 +20,14 @@ class Settings extends Component{
         }
     }
 
-    loadSettings = function(){
-        return JSON.parse(localStorage.getItem("gameSettings")) || [];
-    }
-
-    saveSettings = function(){
-        console.log(this.state);
-        localStorage.setItem("gameSettings", JSON.stringify(this.state));
-    }
-
     changeNumber = function(event){
         let update = {};
         update[event.target.name] = parseInt(event.target.value);
-        this.setState(update, ()=>{this.saveSettings()});
+        this.setState(update, ()=>{GameStore.saveSettings(this.state)});
     }
 
     changeMode = function(event){
-        this.setState({timeTrial: (event.target.value==="true"?true:false)}, ()=>{this.saveSettings()});
+        this.setState({timeTrial: (event.target.value==="true"?true:false)}, ()=>{GameStore.saveSettings(this.state)});
     }
 
     render(){

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Game.css';
 import outerData from './../../datamock.json';
 import Card from './../../components/Card/Card';
+import GameStore from './../../utils/GameStore';
 
 class Game extends Component{
     
@@ -16,7 +17,7 @@ class Game extends Component{
     constructor(props){
       super(props);
 
-      let settings = this.loadSettings();
+      let settings = GameStore.loadSettings();
       this.state = {
         /* Settings */
         timeTrial: settings.timeTrial,
@@ -65,10 +66,6 @@ class Game extends Component{
       this.setState({time : time+1});
       
     }
-    
-    loadSettings = function(){
-      return JSON.parse(localStorage.getItem("gameSettings")) || [];
-    }
 
     roundEnd = function(){
       let roundStat = {
@@ -80,10 +77,7 @@ class Game extends Component{
         skipped: this.state.skipped,
       };
 
-      let stats = JSON.parse(localStorage.getItem("gameStats")) || [];
-      stats.push(roundStat);
-
-      localStorage.setItem("gameStats", JSON.stringify(stats));
+      GameStore.pushStats(roundStat);
       this.props.history.push('/RoundEnd');
     }
 
