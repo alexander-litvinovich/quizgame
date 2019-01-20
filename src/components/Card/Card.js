@@ -18,6 +18,7 @@ export class Card extends Component {
         }
         <p>{category}</p>
         <div>
+            <button name="wrong" onClick={this.props.wrong}><span role="img" aria-label="wrong">👎</span></button>
             <button name="right" onClick={this.props.right}><span role="img" aria-label="right">👍</span></button>
             <button name="skip" onClick={this.props.skip}><span role="img" aria-label="skip">👉</span></button>
         </div>

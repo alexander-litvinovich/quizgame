@@ -27,15 +27,13 @@ class Game extends Component{
         /* Game state */
         gameStart: false,
         right: 0,
+        wrong: 0,
         skipped: 0,
         time: 0,
         timerID: 0,
       };
 
       this.initialState = {...this.state};
-      this.right = this.right.bind(this);
-      this.skip = this.skip.bind(this);
-      this.resetCards = this.resetCards.bind(this);
     }
     
     componentDidMount(){
@@ -67,13 +65,14 @@ class Game extends Component{
       
     }
 
-    roundEnd = function(){
+    roundEnd = ()=>{
       let roundStat = {
         timeStamp: Date.now(),
         time: this.state.time, 
         timeTrial: this.state.timeTrial, 
         timeLimit: this.state.timeLimit,
         right: this.state.right,
+        wrong: this.state.wrong,
         skipped: this.state.skipped,
       };
 
@@ -81,7 +80,7 @@ class Game extends Component{
       this.props.history.push('/RoundEnd');
     }
 
-    resetCards = function(){
+    resetCards = ()=>{
       if(this.state.timeTrial) clearInterval(this.state.timerID);
       this.cards.sort(() => Math.random() - 0.5);
       if(this.state.timeTrial === false) {
@@ -94,15 +93,20 @@ class Game extends Component{
       this.setState(this.initialState);
     }
     
-    right = function(){
+    answer = (isRight) => ()=>{
       if(!this.state.gameStart) this.startTimer();
       this.cardsQueue.shift();
-      this.setState({right: this.state.right+1},()=>{
+      let answerCount = (
+        isRight
+        ?{right: this.state.right+1}
+        :{wrong: this.state.wrong+1}
+      );
+      this.setState(answerCount,()=>{
         if(this.cardsQueue.length === 0) this.roundEnd();
       });
-    };
+    }
     
-    skip = function(){
+    skip = ()=>{
       if(!this.state.gameStart) this.startTimer();
       let currentCard = this.cardsQueue.shift();
       this.cardsQueue.push(currentCard);
@@ -110,7 +114,6 @@ class Game extends Component{
     };
     
     render() {
-      
       return (      
           <div className="game">
               <div className="params">
@@ -120,7 +123,16 @@ class Game extends Component{
     
               {this.cardsQueue.map((card, i)=>{
               let {word, image, category, tabooWords} = card;
-              return <Card key={i} word={word} image={image} category={category} right={this.right} skip={this.skip} tabooWords={tabooWords}></Card>
+              return <Card 
+                      key={i} 
+                      word={word} 
+                      image={image} 
+                      category={category} 
+                      right={this.answer(true)} 
+                      wrong={this.answer(false)} 
+                      skip={this.skip} 
+                      tabooWords={tabooWords}
+                    />
               })}
     
               <div>

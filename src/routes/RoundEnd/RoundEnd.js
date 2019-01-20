@@ -10,7 +10,14 @@ class RoundEnd extends Component{
     constructor(props){
         super(props);
         this.stats = GameStore.loadStats();
-        ({right: this.state.right, skipped: this.state.skipped, time: this.state.time, timeLimit: this.state.timeLimit, timeTrial: this.state.timeTrial} = this.stats[this.stats.length-1] || {});
+        ({
+            right: this.state.right, 
+            wrong: this.state.wrong, 
+            skipped: this.state.skipped, 
+            time: this.state.time, 
+            timeLimit: this.state.timeLimit, 
+            timeTrial: this.state.timeTrial
+        } = this.stats[this.stats.length-1] || {});
     }
 
 
@@ -21,11 +28,13 @@ class RoundEnd extends Component{
     }
 
     render(){
-        let {right, skipped, time, timeLimit, timeTrial} = this.state;
+        let {right, wrong, skipped, time, timeLimit, timeTrial} = this.state;
         return(
             <div className="RoundEnd">
                 <h1>Well done!</h1>
-                <div>You called {right} cards for {time} seconds.</div>
+                <div>You called {right} cards for {time} seconds.
+                    There is {wrong} mistakes and {skipped} skipped cards.
+                </div>
                 <div>previous rounds:</div>
                 
                 <div><Link to="/Game"><button>New round</button></Link></div>
@@ -46,7 +55,7 @@ class RoundEnd extends Component{
                                             {round.time}
                                         </span>
                                         <span className="score">
-                                            ({round.right} / {round.skipped})
+                                            ({round.right} / {round.wrong} / {round.skipped})
                                         </span>
                                     </li>
                                 })
