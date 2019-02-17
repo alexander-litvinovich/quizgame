@@ -1,0 +1,39 @@
+.RoundButton{
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--white)
+}
+
+.RoundButton-small{
+    width: 40px;
+    height: 40px;
+}
+
+.RoundButton-red{
+    background: var(--red);
+}
+
+.RoundButton-green{
+    background: var(--green);
+}
+
+.RoundButton-blue{
+    background: var(--blue);
+}
+
+.RoundButton-magenta{
+    background: var(--magenta);
+}
+
+.RoundButton-black{
+    background: var(--black);
+}
+
+.RoundButton-white{
+    background: var(--white);
+    color: var(--black);
+}

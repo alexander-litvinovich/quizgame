@@ -1,3 +1,19 @@
+:root {
+  --blue: #31AFF6;
+  --green: #31F68C;
+  --magenta: #9431F6;
+  --red: #F63155;
+  
+  --black: #000;
+  --white: #fff;
+}
+
+h1, h2{
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }

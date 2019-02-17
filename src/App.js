@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 
+import Test from './routes/Test';
+
 import Splash from './routes/Splash';
 import Settings from './routes/Settings';
 import Menu from './routes/Menu';
@@ -32,6 +34,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" exact component={Splash} />
+        <Route path="/Test" component={Test} />
         <Route path="/Game" component={Game} />
         <Route path="/Menu" component={Menu} />
         <Route path="/Rules" component={Rules} />

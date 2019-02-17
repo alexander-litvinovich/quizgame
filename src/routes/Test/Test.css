@@ -1,0 +1,181 @@
+.mainMenu{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.appName{
+    height: 15vh;
+    background: var(--magenta);
+    color: var(--white);
+} 
+
+.menuNav{
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0;
+    align-items: center;
+}
+
+.menuNav_item{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.menuNav_item:hover, .menuNav_item:focus{
+    opacity: 0.7;
+    outline: none;
+}
+
+.menuNav_item_title{
+    font-weight: 800;
+    line-height: 40px;
+    font-size: 36px;
+    text-align: center;
+    position: relative;
+    margin: auto 10vw;
+    text-transform: uppercase;
+}
+
+.menuNav_item_subTitle{
+    position: absolute;
+    top: 40px;
+    opacity: 0.6;
+    font-weight: 500;
+    line-height: 15px;
+    font-size: 11px;
+    width: 100%;
+    text-transform: none;
+}
+
+.menuNav_item:nth-child(odd){
+    background: red;
+}
+
+.menuNav_item:nth-child(even){
+    background: blue;
+}
+
+.menuNav_item:nth-child(1){
+    background: var(--blue);
+}
+
+.menuNav_item:nth-child(2){
+    background: var(--green);
+}
+
+.menuNav_item:nth-child(3){
+    background: var(--magenta);
+}
+
+.menuNav_item:nth-child(4){
+    background: var(--red);
+}
+
+.menuNav_item:nth-child(5){
+    background: var(--black);
+}
+
+.appName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Indicator{
+    display: flex;
+    flex-direction: column;
+}
+
+.Indicator_Label{
+    font-style: normal;
+    line-height: 15px;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0.6;
+}
+
+.Indicator_Value{
+    margin-top: -5px;
+    font-weight: 800;
+    line-height: 30px;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: -0.03em;
+}
+
+.ProgressBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: var(--red);
+}
+
+.ProgressBar_fill{
+    height: 100%;
+    background: var(--blue);
+}
+
+.HeaderMenu{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--white);
+}
+
+.HeaderMenu_reset{
+    order: 2;
+}
+
+.HeaderMenu_reset, .HeaderMenu_showMenu{
+    width: 50px;
+    height: 100%;
+    color: var(--white);
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.HeaderMenu_reset:hover svg{
+    transition: transform 0.2s ease-in-out;
+    transform: rotate(360deg) scale(1.1);;
+}
+
+.HeaderMenu_showMenu svg{
+    transition: transform 0.2s ease-in-out;
+}
+
+.HeaderMenu_showMenu:hover svg{
+    transform: scale(1.1);
+}
+
+.HeaderMenu_showMenu:active svg, .HeaderMenu_reset:active svg{
+    transition: transform 0.08s ease-in-out;
+    transform: scale(0.9);
+}
+
+
+
+.HeaderMenu .indicators{
+    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.cardsPack{
+
+}

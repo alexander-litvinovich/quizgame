@@ -1,7 +1,67 @@
 .Card{
-    border: 1px solid #666;
-    width: 300px;
-    margin: 20px;
+    max-width: 350px;
+    border-radius: 20px;
+    background: var(--white);
     padding: 10px;
-    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.Card_inner{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid RGBA(0,0,0,0.1);
+}
+
+.Card_number{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    line-height: 15px;
+    font-size: 12px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.3); 
+}
+
+.Card_title, .Cards_tabooWords{
+    color: var(--black);
+    text-align: center;
+}
+
+.Card_title_category{
+    font-weight: 500;
+    line-height: 15px;
+    font-size: 11px;
+    opacity: 0.5;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0 25px 5px;
+    border-bottom: 1px solid RGBA(0,0,0,0.1);
+    margin-bottom: 5px;
+}
+
+.Card_title_word{
+    font-weight: 800;
+    line-height: 40px;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -0.03em;
+}
+
+
+.Cards_tabooWords_title{
+    font-weight: 500;
+    line-height: 15px;
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+.Cards_tabooWords_word{
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.Cards_buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
