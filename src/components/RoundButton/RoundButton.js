@@ -26,7 +26,9 @@ class RoundButton extends Component{
             title={title}
             aria-label={title}
         >
-            {this.props.children}
+            <div className="RoundButton_child">
+                {this.props.children}
+            </div>
         </button>);
     }
 }

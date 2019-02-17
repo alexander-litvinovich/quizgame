@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Swipeable from 'react-swipy';
 import './Card.css';
 import RoundButton from "components/RoundButton"
+import Icon from "components/Icon"
 
 export class Card extends Component {
   onClickRight  = ()=>{
@@ -63,9 +64,9 @@ export class Card extends Component {
               : ('')
             }
             <div className="Cards_buttons">
-              <RoundButton color="blue" onClick={this.onClickSkip}><span role="img" aria-label="skip">👉</span></RoundButton>
-              <RoundButton color="red" small onClick={this.props.wrong}><span role="img" aria-label="wrong">👎</span></RoundButton>
-              <RoundButton color="green" onClick={this.onClickRight}><span role="img" aria-label="right">👍</span></RoundButton>
+              <RoundButton color="blue" onClick={this.onClickSkip} title="Skip card"><Icon name="Skip"/></RoundButton>
+              <RoundButton color="red" small onClick={this.props.wrong} title="Taboo word spoken"><Icon name="Wrong"/></RoundButton>
+              <RoundButton color="green" onClick={this.onClickRight} title="Called right"><Icon name="Right"/></RoundButton>
             </div>
           </div>
         </div>

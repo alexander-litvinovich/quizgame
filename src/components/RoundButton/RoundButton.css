@@ -5,12 +5,18 @@
     border-radius: 50%;
     border: none;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    color: var(--white)
+    color: var(--white);
 }
 
 .RoundButton-small{
     width: 40px;
     height: 40px;
+}
+
+.RoundButton_child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .RoundButton-red{
