@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Test.css';
-import Card from "../../components/Card/Card";
-import RoundButton from "../../components/RoundButton/RoundButton";
+import Card from "components/Card"; 
+import RoundButton from "components/RoundButton";
 
 const MenuNavItem = (props) => {
     let {title, subTitle="", link} = props;

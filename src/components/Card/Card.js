@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Swipeable from 'react-swipy';
 import './Card.css';
-import RoundButton from "../RoundButton/"
+import RoundButton from "components/RoundButton"
 
 export class Card extends Component {
   onClickRight  = ()=>{

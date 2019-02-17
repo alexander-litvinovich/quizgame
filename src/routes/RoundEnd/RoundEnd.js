@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import GameStore from './../../utils/GameStore';
+import GameStore from 'utils/GameStore';
 import './RoundEnd.css';
 
 class RoundEnd extends Component{

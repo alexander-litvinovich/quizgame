@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Settings.css';
-import GameStore from './../../utils/GameStore';
+import GameStore from 'utils/GameStore';
 
 class Settings extends Component{
 

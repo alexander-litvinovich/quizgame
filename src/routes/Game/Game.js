@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './Game.css';
-import outerData from './../../datamock.json';
-import Card from './../../components/Card/Card';
-import GameStore from './../../utils/GameStore';
+import outerData from 'datamock.json';
+import Card from 'components/Card';
+import GameStore from 'utils/GameStore';
 
 class Game extends Component{
     

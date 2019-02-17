@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Menu.css';
 import { Link } from 'react-router-dom';
-import Icon from "./../../components/Icon/Icon";
+import Icon from "components/Icon";
 
 class Menu extends Component{   
     render(){
