@@ -3,14 +3,14 @@ import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 
-import Test from './routes/Test';
+import Test from 'routes/Test';
 
-import Splash from './routes/Splash';
-import Settings from './routes/Settings';
-import Menu from './routes/Menu';
-import Game from './routes/Game';
-import Rules from './routes/Rules';
-import RoundEnd from './routes/RoundEnd';
+import Splash from 'routes/Splash';
+import Settings from 'routes/Settings';
+import Menu from 'routes/Menu';
+import Game from 'routes/Game';
+import Rules from 'routes/Rules';
+import RoundEnd from 'routes/RoundEnd';
 
 
 class App extends Component {
