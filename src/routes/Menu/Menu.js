@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Menu.css';
 import { Link } from 'react-router-dom';
+import Icon from "./../../components/Icon/Icon";
 
 class Menu extends Component{   
     render(){
@@ -11,6 +12,12 @@ class Menu extends Component{
                 <div><Link to="/Game/Free"><button>Free play</button></Link></div>
                 <div><Link to="/Rules"><button>Rules</button></Link></div>
                 <div><Link to="/Settings"><button>Settings</button></Link></div>
+
+                <div>
+                    <Icon name="Right"/>
+                    <Icon name="Wrong"/>
+                    <Icon name="Skip"/>
+                </div>
             </div>
         );
     }

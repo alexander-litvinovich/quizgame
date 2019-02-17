@@ -1,0 +1,51 @@
+:root{
+    --red: #F63155;
+    --blue: #31AFF6;
+    --green: #31F68C;
+    --magenta: #9431F6;
+    --black: #000000;
+
+}
+
+.decoration{
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    background: var(--magenta);
+    --squareSize: 100vh;
+    --margin-rect: calc(var(--squareSize)/100*11);
+}
+
+
+.rect1{
+    background: var(--green);
+    width: var(--squareSize);
+    height: var(--squareSize);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.rect2, .rect3, .rect4{
+    top: var(--margin-rect);
+    bottom: var(--margin-rect);
+    left: var(--margin-rect);
+    right: var(--margin-rect);
+    position: absolute;
+}
+
+.rect2{
+    background: var(--black);
+}
+
+.rect3{
+    background: var(--blue);
+}
+
+.rect4{
+    background: var(--red);
+}

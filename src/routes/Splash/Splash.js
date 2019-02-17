@@ -4,14 +4,25 @@ import './Splash.css';
 class Splash extends Component{
 
     render(){
-        setTimeout(()=>{
-            this.props.history.push('/Menu');
-        }, 1000);
+        // setTimeout(()=>{
+        //     this.props.history.push('/Menu');
+        // }, 1000);
 
         return( 
             <div className="splash">
-                <h1>Hi! I am taboo game for English learners</h1>
-                  This is a taboo in English. Game for learners.
+                <div className="decoration">
+                        <div className="rect1">
+                            <div className="rect2">
+                                <div className="rect3">
+                                    <div className="rect4"></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+                <h1>Explain Me That!</h1>
+                <span>game for english learners</span>
+                
                   
             </div>
         );
