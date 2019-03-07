@@ -4,6 +4,7 @@
     background: var(--white);
     padding: 10px;
     margin: 0 auto;
+    color: var(--black);
 }
 
 .Card_inner{
@@ -22,7 +23,6 @@
 }
 
 .Card_title, .Cards_tabooWords{
-    color: var(--black);
     text-align: center;
 }
 

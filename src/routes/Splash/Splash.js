@@ -3,13 +3,15 @@ import './Splash.css';
 
 class Splash extends Component{
 
-    render(){
-        // setTimeout(()=>{
-        //     this.props.history.push('/Menu');
-        // }, 1000);
+    navToMenu = () => {
+        this.props.history.push('/Menu');
+    }
 
+    render(){
+        setTimeout(this.navToMenu, 1000);
+       
         return( 
-            <div className="splash">
+            <div className="splash" onClick={this.navToMenu}>
                 <div className="decoration">
                         <div className="rect1">
                             <div className="rect2">
@@ -20,10 +22,10 @@ class Splash extends Component{
                         </div>
                 </div>
                 
-                <h1>Explain Me That!</h1>
-                <span>game for english learners</span>
-                
-                  
+                <div className="App_title">
+                    <h2 className="App_title_word">Explain me&nbsp;that!</h2>
+                    <label className="App_title_description">game for english learners</label>
+                </div>   
             </div>
         );
     }

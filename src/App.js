@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 
 import Test from 'routes/Test';
@@ -14,23 +14,8 @@ import RoundEnd from 'routes/RoundEnd';
 
 
 class App extends Component {
-  
- /* previousLocation = this.props.location;
 
-  componentWillUpdate(nextProps) {
-    let { location } = this.props;
-
-    // set previousLocation if props.location is not modal
-    if (
-      nextProps.history.action !== "POP" &&
-      (!location.state || !location.state.modal)
-    ) {
-      this.previousLocation = this.props.location;
-    }
-  }
-  */
-  render() {
-   
+  render() { 
     return (
       <div className="App">
         <Route path="/" exact component={Splash} />

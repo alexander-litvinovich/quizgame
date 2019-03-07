@@ -28,7 +28,7 @@ class RoundEnd extends Component{
     }
 
     render(){
-        let {right, wrong, skipped, time, timeLimit, timeTrial} = this.state;
+        let {right, wrong, skipped, time /*, timeLimit, timeTrial*/} = this.state;
         return(
             <div className="RoundEnd">
                 <h1>Well done!</h1>

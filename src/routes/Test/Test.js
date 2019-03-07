@@ -3,19 +3,7 @@ import './Test.css';
 import Card from "components/Card"; 
 import RoundButton from "components/RoundButton";
 
-const MenuNavItem = (props) => {
-    let {title, subTitle="", link} = props;
-    return (
-    <a href={link} className="menuNav_item">
-        <div className="menuNav_item_title">
-            {title}
-            {subTitle.length>0
-            ? (<div className="menuNav_item_subTitle">{subTitle}</div>)
-            : ""
-            }            
-        </div>
-    </a>
-)};
+
 
 const Indicator = (props) => {
     let {title, value} = props;
