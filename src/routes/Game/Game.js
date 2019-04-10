@@ -3,17 +3,20 @@ import './Game.css';
 import outerData from 'datamock.json';
 import Card from 'components/Card';
 import GameStore from 'utils/GameStore';
+import ProgressBar from "components/ProgressBar";
+import Indicator from "components/Indicator";
+
 
 class Game extends Component{
-    
-    
+
+
     cards = outerData.words;
     cardsQueue = [];
 
     state = {};
-    initialState = {};    
-    
-    
+    initialState = {};
+
+
     constructor(props){
       super(props);
 
@@ -23,7 +26,7 @@ class Game extends Component{
         timeTrial: settings.timeTrial,
         timeLimit: settings.timeLimit || 30,
         cardsQuantity:  settings.cardsQuantity || 3,
-        
+
         /* Game state */
         gameStart: false,
         right: 0,
@@ -35,13 +38,13 @@ class Game extends Component{
 
       this.initialState = {...this.state};
     }
-    
+
     componentDidMount(){
       this.resetCards();
     }
 
     startTimer = ()=>{
-      
+
       this.setState({
         timerID: window.setInterval(this.tick, 1000),
         gameStart: true
@@ -53,23 +56,23 @@ class Game extends Component{
     componentWillUnmount(){
       clearInterval(this.state.timerID);
     }
-    
+
     tick = () => {
       let {time, timeTrial, timeLimit} = this.state;
-      
+
       if(timeTrial && time === timeLimit){
         return this.roundEnd();
       }
 
       this.setState({time : time+1});
-      
+
     }
 
     roundEnd = ()=>{
       let roundStat = {
         timeStamp: Date.now(),
-        time: this.state.time, 
-        timeTrial: this.state.timeTrial, 
+        time: this.state.time,
+        timeTrial: this.state.timeTrial,
         timeLimit: this.state.timeLimit,
         right: this.state.right,
         wrong: this.state.wrong,
@@ -92,7 +95,7 @@ class Game extends Component{
       console.log(this.cardsQueue);
       this.setState(this.initialState);
     }
-    
+
     answer = (isRight) => ()=>{
       if(!this.state.gameStart) this.startTimer();
       this.cardsQueue.shift();
@@ -105,41 +108,53 @@ class Game extends Component{
         if(this.cardsQueue.length === 0) this.roundEnd();
       });
     }
-    
+
     skip = ()=>{
       if(!this.state.gameStart) this.startTimer();
       let currentCard = this.cardsQueue.shift();
       this.cardsQueue.push(currentCard);
       this.setState({skipped: this.state.skipped+1});
     };
-    
+
     render() {
-      return (      
+      const {timeTrial, time, timeLimit} = this.state;
+      return (
           <div className="game">
+          {
+            timeTrial
+            ? (<ProgressBar min="0" max={timeLimit} value={timeLimit-time} />)
+            : null
+          }
+
+            <Indicator title="skipped">13</Indicator>
+            <Indicator title="wrong">2</Indicator>
+            <Indicator title="right">8</Indicator>
+
+
               <div className="params">
                 timeLimit: {this.state.timeTrial===true?'true':'false'}
               </div>
               <div className="timer">{this.state.time} sec. / {this.state.timeLimit} sec.</div>
-    
+
               {this.cardsQueue.map((card, i)=>{
               let {word, image, category, tabooWords} = card;
-              return <Card 
-                      key={i} 
-                      word={word} 
-                      image={image} 
-                      category={category} 
-                      right={this.answer(true)} 
-                      wrong={this.answer(false)} 
-                      skip={this.skip} 
+              return <Card
+                      key={i}
+                      word={word}
+                      image={image}
+                      category={category}
+                      right={this.answer(true)}
+                      wrong={this.answer(false)}
+                      skip={this.skip}
                       tabooWords={tabooWords}
                     />
               })}
-    
+
               <div>
                   <button onClick={this.startTimer}>Start Game</button>
                   <button onClick={this.resetCards}>Reset</button>
               </div>
-          </div> 
+          </div>
       );
     }
 }

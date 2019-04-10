@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './Menu.css';
 import {Indicator} from "components/Commons";
+import Button from "components/Button";
+
+
+//TODO: Code below is deprecated
 
 const MenuNavItem = (props) => {
     let {title, subTitle="", link} = props;
@@ -27,11 +31,17 @@ class Menu extends Component{
                     </Indicator>
                 </div>
                 <nav className="menuNav">
+                    <Button title="Start" subTitle="Time Attack, 3 min" link="/Game" color="blue"/>
+                    <Button title="Free play"  link="/Game/Free" color="green"/>
+                    <Button title="Statistics" subTitle="Time Attack: 3 cards for 5 minutes" link="/Statistics" color="magenta"/>
+                    <Button title="Settings" link="/Settings" color="red"/>
+                    <Button title="Rules" link="/Rules" color="black"/>
+{/* 
                     <MenuNavItem title="Start" subTitle="Time Attack, 3 min" link="/Game" />
                     <MenuNavItem title="Free play" link="/Game/Free" />
                     <MenuNavItem title="Statistics" subTitle="Time Attack: 3 cards for 5 minutes" link="#" />
                     <MenuNavItem title="Settings" link="/Settings" />
-                    <MenuNavItem title="Rules" link="/Rules" />
+                    <MenuNavItem title="Rules" link="/Rules" /> */}
                 </nav>      
             </div>
         );

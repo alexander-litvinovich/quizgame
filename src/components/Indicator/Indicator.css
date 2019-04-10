@@ -1,0 +1,21 @@
+.Indicator{
+    display: flex;
+    flex-direction: column;
+}
+
+.Indicator-Label{
+    font-style: normal;
+    line-height: 15px;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0.6;
+}
+
+.Indicator-Value{
+    margin-top: -5px;
+    font-weight: 800;
+    line-height: 30px;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: -0.03em;
+}

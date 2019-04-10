@@ -1,11 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import classNames from "classnames";
 import "./RoundButton.css";
 
-class RoundButton extends Component{
-    render(){
-        let {name, color, small, onClick, onFocus, onBlur, title} = this.props;
-        return (
+const RoundButton = ({name, color, small, onClick, onFocus, onBlur, title, children}) => (
             <button 
                 className={classNames("RoundButton", {
                     "RoundButton-small": small,
@@ -24,11 +21,9 @@ class RoundButton extends Component{
                 aria-label={title}
             >
                 <div className="RoundButton_child">
-                    {this.props.children}
+                    {children}
                 </div>
             </button>
-        );
-    }
-}
+);
 
 export default RoundButton;
