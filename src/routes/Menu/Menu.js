@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Menu.css';
-import {Indicator} from "components/Commons";
+import Indicator from "components/Indicator";
 import Button from "components/Button";
 
 
@@ -15,13 +15,13 @@ const MenuNavItem = (props) => {
             {subTitle.length>0
             ? (<div className="menuNav_item_subTitle">{subTitle}</div>)
             : ""
-            }            
+            }
         </div>
     </a>
 )};
 
 
-class Menu extends Component{   
+class Menu extends Component{
     render(){
         return(
             <div className="mainMenu">
@@ -36,13 +36,13 @@ class Menu extends Component{
                     <Button title="Statistics" subTitle="Time Attack: 3 cards for 5 minutes" link="/Statistics" color="magenta"/>
                     <Button title="Settings" link="/Settings" color="red"/>
                     <Button title="Rules" link="/Rules" color="black"/>
-{/* 
+{/*
                     <MenuNavItem title="Start" subTitle="Time Attack, 3 min" link="/Game" />
                     <MenuNavItem title="Free play" link="/Game/Free" />
                     <MenuNavItem title="Statistics" subTitle="Time Attack: 3 cards for 5 minutes" link="#" />
                     <MenuNavItem title="Settings" link="/Settings" />
                     <MenuNavItem title="Rules" link="/Rules" /> */}
-                </nav>      
+                </nav>
             </div>
         );
     }

@@ -13,9 +13,11 @@ import Rules from 'routes/Rules';
 import RoundEnd from 'routes/RoundEnd';
 
 
+import StatisticsContainer from 'containers/StatisticsContainer';
+
 class App extends Component {
 
-  render() { 
+  render() {
     return (
       <div className="App">
         <Route path="/" exact component={Splash} />
@@ -25,6 +27,7 @@ class App extends Component {
         <Route path="/Rules" component={Rules} />
         <Route path="/Settings" component={Settings} />
         <Route path="/RoundEnd" component={RoundEnd} />
+        <Route path="/Statistics" component={StatisticsContainer} />
       </div>
     );
   }

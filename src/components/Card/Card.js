@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Swipeable from 'react-swipy';
 import './Card.css';
-import RoundButton from "components/RoundButton"
-import Icon from "components/Icon"
 
 export class Card extends Component {
   onClickRight  = ()=>{
@@ -15,18 +13,18 @@ export class Card extends Component {
   }
 
   swipeHandler = (...rest)=>{
-    
+
     console.log(rest);
   }
-  
+
   afterSwipeHandler = (...rest)=>{
-    
+
     console.log(rest);
   }
 
   forceSwipeLeft;
   forceSwipeRight;
-  
+
 
   render() {
     const {word, tabooWords, category, image} = this.props;
@@ -52,22 +50,17 @@ export class Card extends Component {
               <label className="Cards_tabooWords_title">taboo words:</label>
               {tabooWords.map((tabooWord, i)=>
               <div
-                className="Cards_tabooWords_word"  
+                className="Cards_tabooWords_word"
                 key={i}
               >
                 {tabooWord}
               </div>)}
             </div>
             {//TODO: think about images. May be in next version implement it.
-              image 
+              image
               ? < img alt="" src = {image}/>
               : ('')
             }
-            <div className="Cards_buttons">
-              <RoundButton color="blue" onClick={this.onClickSkip} title="Skip card"><Icon name="Skip"/></RoundButton>
-              <RoundButton color="red" small onClick={this.props.wrong} title="Taboo word spoken"><Icon name="Wrong"/></RoundButton>
-              <RoundButton color="green" onClick={this.onClickRight} title="Called right"><Icon name="Right"/></RoundButton>
-            </div>
           </div>
         </div>
       </Swipeable>
