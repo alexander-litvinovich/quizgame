@@ -1,45 +1,49 @@
-.RoundButton{
-    width: 60px;
-    height: 60px;
+.RoundButton {
+  width: 60px;
+  height: 60px;
 
-    border-radius: 50%;
-    border: none;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    color: var(--white);
+  border-radius: 50%;
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--white);
 }
 
-.RoundButton-small{
-    width: 40px;
-    height: 40px;
+.RoundButton--sizeSmall {
+  width: 40px;
+  height: 40px;
 }
 
-.RoundButton_child{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.RoundButton-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.RoundButton-red{
-    background: var(--red);
+.RoundButton--colorRed {
+  background: var(--red);
 }
 
-.RoundButton-green{
-    background: var(--green);
+.RoundButton--colorGreen {
+  background: var(--green);
 }
 
-.RoundButton-blue{
-    background: var(--blue);
+.RoundButton--colorBlue {
+  background: var(--blue);
 }
 
-.RoundButton-magenta{
-    background: var(--magenta);
+.RoundButton--colorMagenta {
+  background: var(--magenta);
 }
 
-.RoundButton-black{
-    background: var(--black);
+.RoundButton--colorBlack {
+  background: var(--black);
 }
 
-.RoundButton-white{
-    background: var(--white);
-    color: var(--black);
+.RoundButton--colorWhite {
+  background: var(--white);
+  color: var(--black);
+}
+
+.RoundButton--styleGhost {
+  background: transparent;
 }

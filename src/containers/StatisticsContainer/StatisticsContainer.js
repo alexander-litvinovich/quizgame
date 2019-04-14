@@ -6,17 +6,28 @@ import StatisticsLayout from "layouts/StatisticsLayout";
 class StatisticsContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    const rounds = GameStore.loadStats();
+    const lastRound = rounds.pop();
+    this.state = {
+      rounds: rounds,
+      lastRound: lastRound
+    };
   }
 
   clearStats = () => {
-    this.stats = [];
     GameStore.clearStats();
-    this.setState(this.state);
+    this.setState({ rounds: [] });
   };
 
   render() {
-    return <StatisticsLayout clearStats={this.clearStats} />;
+    const { lastRound, rounds } = this.state;
+    return (
+      <StatisticsLayout
+        lastRound={lastRound}
+        rounds={rounds}
+        clearStats={this.clearStats}
+      />
+    );
   }
 }
 
