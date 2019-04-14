@@ -4,11 +4,11 @@ import "./Header.css";
 
 const Header = ({ children, leftButton, rightButton }) => {
   return (
-    <div className="Header">
+    <header className="Header">
       <div className="Header-LeftButton">{leftButton}</div>
       <div className="Header-RightButton">{rightButton}</div>
       <div className="Header-Middle">{children}</div>
-    </div>
+    </header>
   );
 };
 export default Header;

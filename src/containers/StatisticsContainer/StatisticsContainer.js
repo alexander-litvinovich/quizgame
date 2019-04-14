@@ -26,6 +26,7 @@ class StatisticsContainer extends Component {
         lastRound={lastRound}
         rounds={rounds}
         clearStats={this.clearStats}
+        returnToMenu={{link:"/Menu"}}
       />
     );
   }

@@ -142,7 +142,7 @@ class Game extends Component {
     return (<>
       <div className="Cards_buttons">
         <RoundButton color="blue" onClick={this.skip} title="Skip card"><Icon name="Skip"/></RoundButton>
-        <RoundButton color="red" small onClick={this.answer(false)} title="Taboo word spoken"><Icon name="Wrong"/></RoundButton>
+        <RoundButton color="red" small onClick={this.answer(false)} title="Taboo word spoken"><Icon name="Cross"/></RoundButton>
         <RoundButton color="green" onClick={this.answer(true)} title="Called right"><Icon name="Right"/></RoundButton>
       </div>
     </>);

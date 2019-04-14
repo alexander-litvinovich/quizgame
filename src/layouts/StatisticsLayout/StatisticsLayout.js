@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Header from "components/Header";
 import Indicator from "components/Indicator";
+import RoundButton from "components/RoundButton";
+import Icon from "components/Icon";
+import "./StatisticsLayout.css";
 
 const StatisticsLayoutTableLine = ({
   timeTrial,
@@ -31,11 +34,23 @@ class StatisticsLayout extends Component {
   );
 
   render() {
-    const { rounds, lastRound, clearStats } = this.props;
-    let efficiency = `${lastRound.right / (lastRound.time / 60)} hits/min`;
+    const { rounds, lastRound, clearStats, returnToMenu } = this.props;
+
+    let efficiency;
+
+    if(lastRound) {
+      efficiency = `${lastRound.right / (lastRound.time / 60)} hits/min`;
+    }
+
     return (
       <div className="StatisticsLayout">
-        <Header leftButton={<button>back</button>}>
+        <Header
+          leftButton={
+            <RoundButton {...returnToMenu} title="Back to menu" small ghost>
+              <Icon name="Back" />
+            </RoundButton>
+          }
+        >
           <h1>Statistics</h1>
         </Header>
         {!lastRound ? (
@@ -81,7 +96,14 @@ class StatisticsLayout extends Component {
                     )
                   )}
                 </table>
-                <button onClick={clearStats}>clearStats</button>
+                <RoundButton
+                  onClick={clearStats}
+                  title="Clear game statistics"
+                  color="red"
+                  small
+                >
+                  <Icon name="Cross" />
+                </RoundButton>
               </>
             )}
           </>
