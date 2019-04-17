@@ -6,11 +6,11 @@ import Button from "components/Button";
 const MenuLayout = ({ game, freePlay, statistics, settings, rules }) => {
   return (
     <div className="MenuLayout">
-      <div className="MenuLayout-appName">
+      <header className="MenuLayout-appName">
         <Indicator title="game for english learners">
           <h1>Explain me that!</h1>
         </Indicator>
-      </div>
+      </header>
       <nav className="MenuLayout-menuNav">
         <Button title="Start" color="blue" {...game} />
         <Button title="Free play" color="green" {...freePlay} />

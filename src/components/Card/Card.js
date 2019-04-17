@@ -14,12 +14,12 @@ export class Card extends Component {
 
   swipeHandler = (...rest)=>{
 
-    console.log(rest);
+    //console.log(rest);
   }
 
   afterSwipeHandler = (...rest)=>{
 
-    console.log(rest);
+    //console.log(rest);
   }
 
   forceSwipeLeft;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GameStore from "utils/GameStore";
+import GameStore from "utils/GameStore.js";
 
 import StatisticsLayout from "layouts/StatisticsLayout";
 

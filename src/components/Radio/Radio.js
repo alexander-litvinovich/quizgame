@@ -1,45 +1,39 @@
-import React, { Component } from "react";
+import React from "react";
 import classNames from "classnames";
-import "./Checkbox.css";
+import "./Radio.css";
 
-class Radio extends Component {
-    state = {
-        value
-    };
+const Radio = ({ onWhenChange, options, name, value, color, size }) => {
+  return (
+    <div className="Radio">
+      {options.map(option => (
+        <label
+          tabIndex="0"
+          className={classNames("Radio-option", {
+            checked: option.value === value,
+            "Radio-option--colorBlue": color === "blue",
+            "Radio-option--colorGreen": color === "green",
+            "Radio-option--colorRed": color === "red",
+            "Radio-option--colorMagenta": color === "magenta",
+            "Radio-option--colorBlack": color === "black",
+            "Radio-option--small": size === "small"
+          })}
+        >
+          <div className="Radio-option-title">
+            {/* TODO:  console.log(option.value, value)*/}
+            <input
+              name={name}
+              type="radio"
+              className="_visuallyHidden"
+              onChange={onWhenChange(option.value)}
+              value={option.value}
+              checked={option.value === +value}
+            />
+            {option.title}
+          </div>
+        </label>
+      ))}
+    </div>
+  );
+};
 
-    constructor(props){
-        super(props);
-        
-        if(props.value) {
-            this.state.value = props.value;
-        } else {
-            if(props.options[0]) this.state.value = props.options[0].value;
-        }
-    }
-
-
-    render() {
-        const {onChange, options, name} = this.props;
-
-        return (  
-            <div className="Radio">
-                {options.map((option) => 
-                    <React.Fragment>
-                        <label>
-                            <div>
-                                <input name={name} 
-                                    type="checkbox" 
-                                    className="_visuallyHidden" 
-                                    onChange={onChange} 
-                                    value={option.value} 
-                                    checked={option.value === this.state.value} 
-                                    /> {option.label}
-                            </div>
-                        </label>    
-                    </React.Fragment>)}
-            </div>
-        );
-    }
-}
- 
 export default Radio;

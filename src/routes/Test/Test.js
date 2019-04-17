@@ -12,6 +12,32 @@ class Test extends Component {
     isOpened: false
   };
 
+  dictionaries = [];
+
+  componentDidMount() {
+    fetch("http://localhost:3000/index.json")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log("On index load");
+        this.dictionaries = data.dictionaries;
+        console.log(this.dictionaries);
+        return this.dictionaries.map(dict =>
+          fetch("http://localhost:3000/" + dict.uri)
+            .then(response => response.json())
+            .catch(alert)
+        );
+      })
+      .then(data => {
+        console.log("On dicts load");
+        console.log(data);
+      })
+      .catch(() => {
+        console.warn("error");
+      });
+  }
+
   openModal = isOpened => () => {
     this.setState({ isOpened: isOpened });
   };
@@ -31,9 +57,24 @@ class Test extends Component {
           isOpened={this.state.isOpened}
           onClose={this.openModal(false)}
         >
-          <Button title="Restart" color="blue" size="small" onClick={this.doNothing} />
-          <Button title="Leave game" color="red" size="small" onClick={this.doNothing} />
-          <Button title="Settings" color="black" size="small" onClick={this.doNothing} />
+          <Button
+            title="Restart"
+            color="blue"
+            size="small"
+            onClick={this.doNothing}
+          />
+          <Button
+            title="Leave game"
+            color="red"
+            size="small"
+            onClick={this.doNothing}
+          />
+          <Button
+            title="Settings"
+            color="black"
+            size="small"
+            onClick={this.doNothing}
+          />
           <Button
             title="Resume"
             color="green"

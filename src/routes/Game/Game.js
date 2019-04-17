@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Game.css";
 import outerData from "datamock.json";
 import Card from "components/Card";
-import GameStore from "utils/GameStore";
+import GameStore from "utils/GameStore.js";
 import ProgressBar from "components/ProgressBar";
 import Indicator from "components/Indicator";
 import Icon from "components/Icon";

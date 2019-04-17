@@ -1,3 +1,28 @@
-.Checkbox{
-    
+.Checkbox {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.CheckMark {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.Checkbox input:checked ~ .CheckMark .checkmark {
+  visibility: visible;
+}
+
+.Checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.CheckMark .checkmark {
+  visibility: hidden;
 }

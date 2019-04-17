@@ -3,6 +3,7 @@ import Header from "components/Header";
 import Indicator from "components/Indicator";
 import RoundButton from "components/RoundButton";
 import Icon from "components/Icon";
+import {secToTimeString, roundEfficiency} from "utils/Helpers.js"
 import "./StatisticsLayout.css";
 
 const StatisticsLayoutTableLine = ({
@@ -14,11 +15,11 @@ const StatisticsLayoutTableLine = ({
   efficiency
 }) => (
   <tr>
-    <id>{timeTrial ? "Time attack" : "Card set"}</id>
-    <id>{`${right} hits / ${time} min`}</id>
-    <id>{wrong}</id>
-    <id>{skipped}</id>
-    <id>{efficiency}</id>
+    <td>{timeTrial ? "Time attack" : "Card set"}</td>
+    <td>{`${right} hits / ${time}`}</td>
+    <td>{wrong}</td>
+    <td>{skipped}</td>
+    <td>{efficiency} hits/min</td>
   </tr>
 );
 
@@ -63,17 +64,25 @@ class StatisticsLayout extends Component {
               <div className="lastRoundWidget-topLine">
                 <Indicator title="hits" value={lastRound.right} />
                 <div className="lastRoundWidget-for">for</div>
-                <Indicator title="time" value={lastRound.time} />
+                <Indicator title="time" value={secToTimeString(lastRound.time)} />
                 <Indicator title="buzz" value={lastRound.wrong} />
                 <Indicator title="skipped" value={lastRound.skipped} />
               </div>
               <div className="lastRoundWidget-bottomLine">
-                <Indicator title="efficiency" value={efficiency} />
+                <Indicator title="efficiency" value={`${roundEfficiency(lastRound)} hits/min`} />
               </div>
             </div>
             {rounds && (
               <>
                 <table>
+                <tr>
+                  <td>mode</td>
+                  <td>result</td>
+                  <td>buzz</td>
+                  <td>skipped</td>
+                  <td>efficiency</td>
+                </tr>
+
                   {rounds.map(
                     ({
                       timeTrial,
@@ -82,16 +91,15 @@ class StatisticsLayout extends Component {
                       time,
                       skipped,
                       timeStamp,
-                      efficiency
                     }) => (
                       <StatisticsLayoutTableLine
                         key={timeStamp}
                         timeTrial={timeTrial}
                         right={right}
                         wrong={wrong}
-                        time={time}
+                        time={secToTimeString(time)}
                         skipped={skipped}
-                        efficiency={efficiency}
+                        efficiency={roundEfficiency({right, time})}
                       />
                     )
                   )}

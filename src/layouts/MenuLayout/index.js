@@ -1,4 +1,3 @@
-
-import MenuLayout from './MenuLayout';
+import MenuLayout from "./MenuLayout";
 
 export default MenuLayout;

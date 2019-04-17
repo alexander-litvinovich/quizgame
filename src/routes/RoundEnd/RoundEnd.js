@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import GameStore from 'utils/GameStore';
+import GameStore from 'utils/GameStore.js';
 import './RoundEnd.css';
 
 class RoundEnd extends Component{
@@ -11,11 +11,11 @@ class RoundEnd extends Component{
         super(props);
         this.stats = GameStore.loadStats();
         ({
-            right: this.state.right, 
-            wrong: this.state.wrong, 
-            skipped: this.state.skipped, 
-            time: this.state.time, 
-            timeLimit: this.state.timeLimit, 
+            right: this.state.right,
+            wrong: this.state.wrong,
+            skipped: this.state.skipped,
+            time: this.state.time,
+            timeLimit: this.state.timeLimit,
             timeTrial: this.state.timeTrial
         } = this.stats[this.stats.length-1] || {});
     }
@@ -36,9 +36,9 @@ class RoundEnd extends Component{
                     There is {wrong} mistakes and {skipped} skipped cards.
                 </div>
                 <div>previous rounds:</div>
-                
+
                 <div><Link to="/Game"><button>New round</button></Link></div>
-                
+
                 {this.stats.length > 0 && (
                     <React.Fragment>
                         <h3>Statistics:</h3>

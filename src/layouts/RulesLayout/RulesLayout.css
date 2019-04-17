@@ -1,0 +1,5 @@
+.RulesLayout{
+  background: var(--black);
+  color: var(--white);
+  min-height: 100vh;
+}

@@ -27,3 +27,8 @@
   flex-grow: 1;
   align-items: center;
 }
+
+.Header-Middle>h1{
+  font-size: 24px;
+  font-weight: 600;
+}
