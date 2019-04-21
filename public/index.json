@@ -1,8 +1,14 @@
 {
-  "dictionaries": [
-    {
+  "dictionaries": {
+
+    "urbandictionary" : {
       "title": "Urban Dictionary",
       "uri": "datamock.json"
+    },
+    "sworewords" : {
+      "title": "Swore words",
+      "uri": "swore.json"
     }
-  ]
+  }
+
 }

@@ -2,6 +2,11 @@ import React from "react";
 import classNames from "classnames";
 import "./ModalWindow.css";
 
+const onClickBuffer = func => event => {
+  event.stopPropagation();
+  func();
+};
+
 const ModalWindow = ({
   children,
   title,
@@ -9,6 +14,8 @@ const ModalWindow = ({
   color,
   onOpen = () => {},
   onClose = () => {},
+  leftButton,
+  rightButton,
   isOpened
 }) => {
   const classes = classNames("ModalWindow-Header", {
@@ -20,10 +27,10 @@ const ModalWindow = ({
   });
 
   return (
-    <React.Fragment>
+    <>
       <div
         className={classNames("ModalWindow", { opened: isOpened })}
-        onClick={onClose}
+        onClick={onClickBuffer(onClose)}
       >
         <div className="ModalWindow-Content">
           {title ? (
@@ -33,6 +40,16 @@ const ModalWindow = ({
             </div>
           ) : null}
           {children}
+          {leftButton && rightButton && (
+            <div className="ModalWindow-SideBySide">
+              <div className="ModalWindow-SideBySide-Container">
+                {leftButton}
+              </div>
+              <div className="ModalWindow-SideBySide-Container">
+                {rightButton}
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div
@@ -40,7 +57,7 @@ const ModalWindow = ({
           opened: isOpened
         })}
       />
-    </React.Fragment>
+    </>
   );
 };
 

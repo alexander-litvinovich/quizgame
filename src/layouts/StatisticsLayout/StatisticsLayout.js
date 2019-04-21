@@ -37,12 +37,6 @@ class StatisticsLayout extends Component {
   render() {
     const { rounds, lastRound, clearStats, returnToMenu } = this.props;
 
-    let efficiency;
-
-    if(lastRound) {
-      efficiency = `${lastRound.right / (lastRound.time / 60)} hits/min`;
-    }
-
     return (
       <div className="StatisticsLayout">
         <Header

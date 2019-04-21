@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import GameStore from "utils/GameStore.js";
+import Dictionary from "utils/Dictionary";
 
 import SettingsLayout from "layouts/SettingsLayout";
 
@@ -34,63 +35,74 @@ class SettingsContainer extends Component {
     }
   ];
 
-  dictionariesList = [
-    {
-      title: "Urban dictionary",
-      value: true,
-      url: "test",
+  async componentDidMount() {
+    const dictList = await Dictionary.list();
+    if (this.dictFallback()) {
+      let fallback = {};
+      Object.keys(dictList).forEach(element => {
+        fallback[element]=true;
+      });
+
+      this.setState({ dicts: fallback }, () => {
+        GameStore.saveDicts(fallback);
+      });
     }
-  ]
+
+    this.setState({ isDictListLoaded: true, dictionariesList: dictList });
+  }
 
   constructor(props) {
     super(props);
-    this.state = GameStore.loadSettings();
+    this.state = {
+      settings: { ...GameStore.loadSettings() },
+      dicts: { ...GameStore.loadDicts() }
+    };
   }
 
-  changeGameMode = gameMode => () => {
-    this.setState({ gameMode: gameMode }, () => {
-      GameStore.saveSettings(this.state);
+  onChangeSettings = set => value => () => {
+    console.log("SET UPD!");
+
+    const { settings } = this.state;
+    settings[set] = value;
+
+    console.log("SET UPD: ", settings);
+
+    this.setState({ settings: settings }, () => {
+      GameStore.saveSettings(settings);
     });
   };
 
-  changeTimeLimit = timeLimit => () => {
-    this.setState({ timeLimit: timeLimit }, () => {
-      GameStore.saveSettings(this.state);
-    });
-  }
-
-  changeCardSet = cardSet => {
-    this.setState({ cardSet: cardSet }, () => {
-      GameStore.saveSettings(this.state);
-    });
-  }
-
-  onTest = event => {
+  onSelectDicts = set => event => {
     console.log(event.target.checked);
-    this.setState({checkboxTest: event.target.checked})
+
+    let { dicts } = this.state;
+    dicts[set] = event.target.checked;
+
+    this.setState({ dicts: dicts }, () => {
+      GameStore.saveDicts(dicts);
+    });
+  };
+
+  dictFallback = () => {
+    let { dicts } = this.state;
+
+    return !Object.keys(dicts).reduce((prev, cur) => prev || dicts[cur], false);
   };
 
   render() {
-    const { gameMode, timeLimit, cardSet } = this.state;
+    const { settings, dicts, dictionariesList, isDictListLoaded } = this.state;
 
     return (
       <SettingsLayout
         gameModeOptions={this.gameModeOptions}
         timeLimitOptions={this.timeLimitOptions}
-
-        dictionariesList={this.dictionariesList}
-
-        onTest = {this.onTest}
-
-        gameMode={gameMode}
-        timeLimit={timeLimit}
-        cardSet={cardSet}
-        checkboxTest={this.state.checkboxTest}
-
-        changeGameMode={this.changeGameMode}
-        changeTimeLimit={this.changeTimeLimit}
-        changeCardSet={this.changeCardSet}
-
+        settings={settings}
+        dicts={dicts}
+        dictionariesList={dictionariesList}
+        onChangeSettings={this.onChangeSettings}
+        onSelectDicts={this.onSelectDicts}
+        isDictListLoaded={isDictListLoaded}
+        dictFallback={this.dictFallback}
         returnToMenu={{ link: "/Menu" }}
       />
     );

@@ -1,41 +1,49 @@
 import React, { Component } from "react";
 import "./Test.css";
 import Card from "components/Card";
-import RoundButton from "components/RoundButton";
+
 import ModalWindow from "components/ModalWindow";
 import ProgressBar from "components/ProgressBar";
 import Indicator from "components/Indicator";
 import Button from "components/Button";
+import Dictionary from "utils/Dictionary";
 
 class Test extends Component {
   state = {
-    isOpened: false
+    isOpened: false,
+    isLoaded: false
   };
 
-  dictionaries = [];
-
-  componentDidMount() {
-    fetch("http://localhost:3000/index.json")
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        console.log("On index load");
-        this.dictionaries = data.dictionaries;
-        console.log(this.dictionaries);
-        return this.dictionaries.map(dict =>
-          fetch("http://localhost:3000/" + dict.uri)
-            .then(response => response.json())
-            .catch(alert)
+  async loadDicts(filter) {
+    try {
+      const dictList = await Dictionary.list();
+      console.log("PLIST: ", dictList);
+      try {
+        const dicts = await Promise.all(
+          Object.keys(dictList).reduce((prev, dictId) => {
+            return [...prev, Dictionary.get(dictId)];
+          }, [])
         );
-      })
-      .then(data => {
-        console.log("On dicts load");
-        console.log(data);
-      })
-      .catch(() => {
-        console.warn("error");
-      });
+
+        const result = Object.keys(dictList).reduce((prev, dictId, index) => {
+          if (filter.indexOf(dictId) >= 0) return [...prev, ...dicts[index]];
+          return [...prev];
+        }, []);
+
+        console.log("PDICTS: ", this.dicts);
+        this.setState({ isLoaded: true });
+        return result;
+      } catch {
+        console.error("Error loading dictionaries");
+      }
+    } catch {
+      console.error("Error loading list");
+    }
+  }
+
+  async componentDidMount() {
+    const filter = ["sworewords", "urbandictionary"];
+    console.log(await this.loadDicts(filter));
   }
 
   openModal = isOpened => () => {
@@ -48,8 +56,11 @@ class Test extends Component {
   };
 
   render() {
+    if (this.state.isLoaded) console.log("DICTS LOADED:", this.dicts);
+
     return (
       <div className="game">
+        {this.state.isLoaded ? <h1>LOADED</h1> : <h1>NOT LOADED</h1>}
         <ModalWindow
           title="Pause"
           text="I am just text inside of modal window"

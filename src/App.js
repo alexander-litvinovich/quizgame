@@ -7,10 +7,10 @@ import MenuContainer from "containers/MenuContainer";
 import StatisticsContainer from "containers/StatisticsContainer";
 import SettingsContainer from "containers/SettingsContainer";
 import RulesContainer from "containers/RulesContainer";
+import GameContainer from "containers/GameContainer";
 
 import Test from "routes/Test";
 
-import Game from "routes/Game";
 import RoundEnd from "routes/RoundEnd";
 
 class App extends Component {
@@ -22,10 +22,15 @@ class App extends Component {
         <Route path="/Menu" component={MenuContainer} />
         <Route path="/Rules" component={RulesContainer} />
         <Route path="/Settings" component={SettingsContainer} />
+        <Route path="/Game" exact component={GameContainer} />
+        <Route
+          path="/Game/Free"
+          exact
+          component={() => <GameContainer isFreePlay={true} />}
+        />
 
         {/* TODO: convert to Container-Layout */}
 
-        <Route path="/Game" exact component={Game} />
         <Route path="/RoundEnd" component={RoundEnd} />
 
         <Route path="/Test" component={Test} />

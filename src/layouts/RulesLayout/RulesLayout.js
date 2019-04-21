@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./RulesLayout.css";
 import Header from "components/Header";
 import Icon from "components/Icon";

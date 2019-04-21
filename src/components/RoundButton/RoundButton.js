@@ -3,6 +3,11 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import "./RoundButton.css";
 
+const onClickBuffer = (func) => (event) => {
+  event.stopPropagation();
+  func();
+}
+
 const RoundButton = ({
   name,
   color = "black",
@@ -13,9 +18,11 @@ const RoundButton = ({
   onFocus,
   onBlur,
   title,
-  children
+  children,
+  disabled
 }) => {
   const classes = classNames("RoundButton", {
+    "is-disabled": disabled,
     "RoundButton--sizeSmall": small,
     "RoundButton--styleGhost": ghost,
     "RoundButton--colorBlue": color === "blue",
@@ -44,11 +51,12 @@ const RoundButton = ({
     <button
       className={classes}
       name={name}
-      onClick={onClick}
+      onClick={onClickBuffer(onClick)}
       onFocus={onFocus}
       onBlur={onBlur}
       title={title}
       aria-label={title}
+      disabled={disabled}
     >
       {inner}
     </button>

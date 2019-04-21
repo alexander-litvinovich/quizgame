@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import "./Button.css";
 
+const onClickBuffer = (func) => (event) => {
+  event.stopPropagation();
+  func();
+}
+
 const Button = ({ title, subTitle = "", link = "", onClick, color, small }) => {
   const classes = classNames("Button", {
     "Button--small": small,
@@ -31,7 +36,7 @@ const Button = ({ title, subTitle = "", link = "", onClick, color, small }) => {
           {inner}
         </Link>
       ) : (
-        <button onClick={onClick} className={classes}>
+        <button onClick={onClickBuffer(onClick)} className={classes}>
           {inner}
         </button>
       )}

@@ -8,25 +8,21 @@ import Radio from "components/Radio";
 import Checkbox from "components/Checkbox";
 import NumberInput from "components/NumberInput";
 
-let checkboxTest = true;
-
+//let checkboxTest = true;
 
 const SettingsLayout = ({
   gameModeOptions,
   timeLimitOptions,
 
+  isDictListLoaded,
+
+  settings,
+  dicts,
+
+  onChangeSettings,
+  onSelectDicts,
+
   dictionariesList,
-
-  gameMode,
-  timeLimit,
-  cardSet,
-
-  onTest,
-  checkboxTest,
-
-  changeGameMode,
-  changeTimeLimit,
-  changeCardSet,
 
   returnToMenu
 }) => {
@@ -42,44 +38,66 @@ const SettingsLayout = ({
         <h1>Settings</h1>
       </Header>
 
-      <label>Game mode:</label>
-      <Radio
-        options={gameModeOptions}
-        value={gameMode}
-        onWhenChange={changeGameMode}
-        color="red"
-      />
+      <div className="SettingsLayout-block">
+        <label className="SettingsLayout-label">game mode:</label>
+        <Radio
+          options={gameModeOptions}
+          value={settings.gameMode}
+          onWhenChange={onChangeSettings("gameMode")}
+          color="red"
+        />
+      </div>
 
-      {gameMode ? (
-        <>
-          <label>Time limit:</label>
-          <Radio
-            options={timeLimitOptions}
-            value={timeLimit}
-            onWhenChange={changeTimeLimit}
-            color="red"
-          />
-        </>
-      ) : (
-        <>
-          {/* TODO: Fix up cardSet handler  */}
-          <label>Card set:</label>
-          <NumberInput
-            color="red"
-            min="3"
-            max="10"
-            value={cardSet}
-            onWhenChange={changeCardSet}
-          />
-        </>
-      )}
+      <div className="SettingsLayout-block">
+        {settings.gameMode ? (
+          <>
+            <label className="SettingsLayout-label">time limit:</label>
+            <Radio
+              options={timeLimitOptions}
+              value={settings.timeLimit}
+              onWhenChange={onChangeSettings("timeLimit")}
+              color="red"
+            />
+          </>
+        ) : (
+          <>
+            <label className="SettingsLayout-label">card set:</label>
+            <NumberInput
+              color="red"
+              min={3}
+              max={10}
+              value={settings.cardSet}
+              onWhenChange={onChangeSettings("cardSet")}
 
-      <Checkbox
-        label="Urban Dictionary"
-        onWhenChange={onTest}
-        value={123}
-        checked={checkboxTest}
-      />
+              //onWhenChange={alert}
+            />
+          </>
+        )}
+      </div>
+
+      <div className="SettingsLayout-block">
+        <label className="SettingsLayout-label">vocabluaries:</label>
+        {isDictListLoaded ? (
+          <div className="DictsSelector">
+            {Object.keys(dictionariesList).map(dict => (
+              <div className="DictsSelector-dict">
+                <Checkbox
+                  label={dictionariesList[dict].title}
+                  value={dict}
+                  onWhenChange={onSelectDicts(dict)}
+                  checked={dicts[dict]}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div>Dicts loading</div>
+        )}
+      </div>
+
+      <div className="SettingsLayout-block">
+        <label className="SettingsLayout-tip">Settings are saving automatically</label>
+      </div>
     </div>
   );
 };

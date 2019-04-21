@@ -8,5 +8,5 @@ export const secToTimeString = input => {
 };
 
 export const roundEfficiency = ({right, time}) => {
-  return right/(time/60);
+  return (right/(time/60)).toFixed(2);
 }

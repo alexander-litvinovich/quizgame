@@ -1,0 +1,32 @@
+.GameLayout.is-cardSet {
+  background: var(--magenta);
+}
+
+.GameLayout.is-freePlay {
+  background: var(--blue);
+}
+
+.GameLayout {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.GameLayout-cardWrapper {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 40px;
+}
+
+.GameLayout-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0));
+  left: 0;
+  right: 0;
+  padding-bottom: 10px;
+}

@@ -8,6 +8,7 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
   color: var(--white);
   cursor: pointer;
+  box-shadow: 0 5px 10px RGBA(0, 0, 0, 0.125);
 }
 
 .RoundButton ::selection {
@@ -53,5 +54,10 @@
 
 .RoundButton--styleGhost {
   background: transparent;
-  border: 0 none;
+  border: none;
+  box-shadow: none;
+}
+
+.RoundButton.is-disabled {
+  opacity: 0.5;
 }

@@ -1,6 +1,7 @@
 .StatisticsLayout{
   background: var(--magenta);
   color: var(--white);
+  min-height: 100vh;
 }
 
 .lastRoundWidget{
