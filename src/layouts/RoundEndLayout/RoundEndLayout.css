@@ -1,0 +1,20 @@
+.RoundEndLayout{
+  background: var(--magenta);
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+
+.RoundEndLayout-pane{
+  display: flex;
+  flex-grow: 5;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.Statistics-clearButton{
+  margin: 0 auto;
+}

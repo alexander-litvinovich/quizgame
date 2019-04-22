@@ -77,26 +77,33 @@ const SettingsLayout = ({
 
       <div className="SettingsLayout-block">
         <label className="SettingsLayout-label">vocabluaries:</label>
-        {isDictListLoaded ? (
-          <div className="DictsSelector">
-            {Object.keys(dictionariesList).map(dict => (
-              <div className="DictsSelector-dict">
-                <Checkbox
-                  label={dictionariesList[dict].title}
-                  value={dict}
-                  onWhenChange={onSelectDicts(dict)}
-                  checked={dicts[dict]}
-                />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div>Dicts loading</div>
-        )}
+        <div className="DictsSelector">
+          {isDictListLoaded ? (
+            <>
+              {Object.keys(dictionariesList).map(dict => (
+                <div className="DictsSelector-dict">
+                  <Checkbox
+                    label={dictionariesList[dict].title}
+                    value={dict}
+                    onWhenChange={onSelectDicts(dict)}
+                    checked={dicts[dict]}
+                  />
+                </div>
+              ))}
+            </>
+          ) : (
+            <div className="DictsSelector-preloader">
+              <Icon name="Preloader" />
+              <div className="DictsSelector-preloader-text">Please, be patient while we loading our best words</div>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="SettingsLayout-block">
-        <label className="SettingsLayout-tip">Settings are saving automatically</label>
+        <label className="SettingsLayout-tip">
+          Settings are saving automatically
+        </label>
       </div>
     </div>
   );

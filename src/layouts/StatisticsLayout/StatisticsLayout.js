@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "components/Header";
-import Indicator from "components/Indicator";
+import LastRoundWidget from "components/LastRoundWidget";
+
 import RoundButton from "components/RoundButton";
 import Icon from "components/Icon";
 import {secToTimeString, roundEfficiency} from "utils/Helpers.js"
@@ -52,20 +53,7 @@ class StatisticsLayout extends Component {
           this.renderFallback()
         ) : (
           <>
-            <div className="lastRoundWidget">
-              <h2>Last Round</h2>
-              {console.log(lastRound)}
-              <div className="lastRoundWidget-topLine">
-                <Indicator title="hits" value={lastRound.right} />
-                <div className="lastRoundWidget-for">for</div>
-                <Indicator title="time" value={secToTimeString(lastRound.time)} />
-                <Indicator title="buzz" value={lastRound.wrong} />
-                <Indicator title="skipped" value={lastRound.skipped} />
-              </div>
-              <div className="lastRoundWidget-bottomLine">
-                <Indicator title="efficiency" value={`${roundEfficiency(lastRound)} hits/min`} />
-              </div>
-            </div>
+             <LastRoundWidget stats={lastRound} style="stats" />
             {rounds && (
               <>
                 <table>
@@ -98,14 +86,7 @@ class StatisticsLayout extends Component {
                     )
                   )}
                 </table>
-                <RoundButton
-                  onClick={clearStats}
-                  title="Clear game statistics"
-                  color="red"
-                  small
-                >
-                  <Icon name="Cross" />
-                </RoundButton>
+
               </>
             )}
           </>

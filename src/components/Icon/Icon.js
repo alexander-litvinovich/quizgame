@@ -6,6 +6,8 @@ import IconMenu from "./Assets/IconMenu";
 import IconRestart from "./Assets/IconRestart";
 import IconCross from "./Assets/IconCross";
 import IconBack from "./Assets/IconBack";
+import IconPreloader from "./Assets/IconPreloader";
+
 
 const Icon = ({ name }) => {
   const icons = {
@@ -15,6 +17,7 @@ const Icon = ({ name }) => {
     Back: IconBack,
     Restart: IconRestart,
     Cross: IconCross,
+    Preloader: IconPreloader,
   };
   const CustomIcon = typeof name === "string" && icons[name];
 

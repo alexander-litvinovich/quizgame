@@ -29,6 +29,13 @@
   border-radius: 10px;
 }
 
+.DictsSelector-preloader{
+  padding: 10px;
+}
+.DictsSelector-preloader-text{
+  margin-top: 10px;
+  font-size: 14px;
+}
 
 .DictsSelector-dict + .DictsSelector-dict{
   margin-top: 10px;
