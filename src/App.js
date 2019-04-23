@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 
 import SplashContainer from "containers/SplashContainer";
 import MenuContainer from "containers/MenuContainer";
-import StatisticsContainer from "containers/StatisticsContainer";
 import RoundEndContainer from "containers/RoundEndContainer";
 import SettingsContainer from "containers/SettingsContainer";
 import RulesContainer from "containers/RulesContainer";
@@ -19,7 +18,6 @@ class App extends Component {
       <Switch>
 
         <Route path="/" exact component={SplashContainer} />
-        {/* <Route path="/Statistics" component={StatisticsContainer} /> */}
         <Route path="/Statistics" component={()=><RoundEndContainer roundEnd={false}/>} />
         <Route path="/RoundEnd" component={()=><RoundEndContainer roundEnd={true}/>} />
         <Route path="/Menu" component={MenuContainer} />
