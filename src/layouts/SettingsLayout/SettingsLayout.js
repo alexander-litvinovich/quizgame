@@ -34,6 +34,7 @@ const SettingsLayout = ({
             <Icon name="Back" />
           </RoundButton>
         }
+        fixed
       >
         <h1>Settings</h1>
       </Header>
@@ -76,6 +77,7 @@ const SettingsLayout = ({
       <div className="SettingsLayout-block">
         <label className="SettingsLayout-label">dictionaries:</label>
         <div className="DictsSelector">
+        <div className="DictsSelector-wrapper">
           {isDictListLoaded ? (
             <>
               {Object.keys(dictionariesList).map(dict => (
@@ -90,19 +92,20 @@ const SettingsLayout = ({
               ))}
             </>
           ) : (
-            <div className="DictsSelector-preloader">
-              <Icon name="Preloader" />
-              <div className="DictsSelector-preloader-text">Please, be patient while we loading our best words</div>
-            </div>
+              <div className="DictsSelector-preloader">
+                <Icon name="Preloader" />
+                <div className="DictsSelector-preloader-text">Please, be patient while we loading our best words</div>
+              </div>
           )}
+            </div>
         </div>
       </div>
 
       <div className="SettingsLayout-block">
         <label className="SettingsLayout-layout">
-          for debugging purpouses:
+          for debugging purposes:
         </label>
-        <Button color="red" title="Kill cache" subTitle="Will be removed in public version" {...killCache} />
+        <Button color="red" title="Clean, refetch" {...killCache} />
       </div>
 
       <div className="SettingsLayout-block">

@@ -10,10 +10,12 @@
   align-items: center;
 }
 
-.Button:hover,
-.Button:focus {
-  opacity: 0.7;
+.Button:focus{
   outline: none;
+}
+
+.Button:hover{
+  opacity: 0.7;
 }
 
 .Button-title {

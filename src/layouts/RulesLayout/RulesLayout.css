@@ -1,5 +1,58 @@
-.RulesLayout{
+.RulesLayout {
   background: var(--black);
   color: var(--white);
   min-height: 100vh;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.RulesLayout-textContainer {
+  max-width: 450px;
+  min-width: 280px;
+  margin: 0 20px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.RulesLayout-textContainer p,
+.RulesLayout-textContainer li,
+.RulesLayout-textContainer h2,
+.RulesLayout-textContainer h3 {
+  text-align: left;
+  margin: 10px 0;
+}
+
+.RulesLayout-textContainer p + h2{
+  margin-top: 20px;
+}
+
+.RulesLayout-textContainer h2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.contribute{
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.contribute ul, .contribute li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contribute img{
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.contribute a[href]{
+  color: var(--green);
 }

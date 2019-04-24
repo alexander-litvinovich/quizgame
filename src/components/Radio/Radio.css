@@ -2,6 +2,13 @@
   background: transparent;
 }
 
+.Radio{
+  max-width: 450px;
+  width: 100%;
+  min-width: 280px;
+  margin: 0 auto;
+}
+
 .Radio input[type="radio"]{
   display: none;
 }

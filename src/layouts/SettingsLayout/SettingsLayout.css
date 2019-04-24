@@ -2,15 +2,21 @@
   background: var(--red);
   color: var(--white);
   min-height: 100vh;
+  padding-top: 60px;
   padding-bottom: 10px;
 }
 
 .SettingsLayout-block {
-  margin: 10px 0;
+  margin: 10px auto;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .SettingsLayout-label {
-  margin-bottom: 10px;
+  margin: 0 auto 10px auto;
   text-align: center;
   display: block;
 }
@@ -20,10 +26,14 @@
 }
 
 .DictsSelector {
-  max-width: 320px;
+  margin: 0 auto;
+}
+
+.DictsSelector-wrapper{
+  max-width: 450px;
   min-width: 280px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  margin: 0 auto;
+  margin: 0 20px;
   padding: 20px;
   border-radius: 10px;
 }
