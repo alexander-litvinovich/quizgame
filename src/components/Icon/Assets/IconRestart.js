@@ -1,27 +1,15 @@
 import React from "react";
 
-const IconRight = () => (
+const IconRestart = () => (
   <svg
-    width="34"
-    height="35"
-    viewBox="0 0 34 35"
-    fill="none"
+    width="30"
+    height="30"
+    viewBox="0 0 30 30"
+    fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      d="M25.9995 12.7153L24.0711 10.7868C20.1658 6.88155 13.8342 6.88155 9.92893 10.7868C6.02369 14.692 6.02369 21.0237 9.92893 24.9289C13.8342 28.8342 20.1658 28.8342 24.0711 24.9289C24.8973 24.1027 25.5487 23.1679 26.0253 22.1704"
-      stroke="currentColor"
-      stroke-width="4"
-      stroke-linecap="round"
-    />
-    <path
-      d="M21.9497 14.3223L27.6066 14.3223L27.6066 8.66547"
-      stroke="currentColor"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
+    <path d="M9.343 20.665a8 8 0 0 0 11.314 0 7.984 7.984 0 0 0 1.564-2.207 2 2 0 0 1 3.609 1.725 11.984 11.984 0 0 1-2.345 3.31c-4.686 4.687-12.284 4.687-16.97 0-4.687-4.686-4.687-12.284 0-16.97 4.686-4.687 12.284-4.687 16.97 0l.122.121v-.828a2 2 0 1 1 4 0v5.656a2 2 0 0 1-2 2H19.95a2 2 0 0 1 0-4h.828l-.121-.12A8 8 0 0 0 9.343 20.664z"/>
   </svg>
 );
 
-export default IconRight;
+export default IconRestart;

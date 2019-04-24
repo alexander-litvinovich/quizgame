@@ -51,7 +51,7 @@
 
 .ModalWindow-Header h2{
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .ModalWindow-Text{
@@ -64,7 +64,7 @@
 }
 
 .ModalWindow-SideBySide-Container{
-  flex-grow: 1;
+  width: 50%;
 }
 
 .ModalWindow-Header--colorBlue {

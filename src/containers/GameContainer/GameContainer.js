@@ -30,13 +30,6 @@ const initialState = (isFreePlay = false, keepScore = false) => {
     isRestartDialogOpened: false
   };
 
-  // init.cardsQueue = [
-  //   {isCardBack:true, isLoading: true},
-  //   {isCardBack:true, isLoading: true},
-  //   {isCardBack:true, isLoading: true},
-  //   {isCardBack:true, isLoading: true}
-  // ];
-
   return init;
 };
 

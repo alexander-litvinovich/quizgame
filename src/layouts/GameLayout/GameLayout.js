@@ -172,9 +172,7 @@ const GameLayout = props => {
     score,
     gameState,
 
-    cardsQueue,
-
-    isDictLoaded
+    cardsQueue
   } = props;
 
   const NUMBER_OF_CARDS_TO_SHOW = 4; //4th will be with zero opacity
@@ -188,39 +186,39 @@ const GameLayout = props => {
     >
       {renderHeader(props)}
       <div className="GameLayout-cardWrapper">
-            {cardsQueue.length>0 &&
-              cardsQueue
-                .slice(-NUMBER_OF_CARDS_TO_SHOW)
-                .map((card, index, array) => {
-                  const {
-                    word,
-                    image,
-                    category,
-                    tabooWords,
-                    isCardBack,
-                    isLoading = false
-                  } = card;
-                  return (
-                    <Card
-                      cardIndex={array.length - index} //1-N, 1 - is upper
-                      onSwipeLeft={onSkip()}
-                      onSwipeRight={onAnswer(true)}
-                      onSwipeStart={onStart()}
-                      key={word + category}
-                      word={word}
-                      image={image}
-                      category={category}
-                      tabooWords={tabooWords}
-                      isCardBack={isCardBack}
-                      isFreePlay={gameState.isFreePlay}
-                      isLoading={isLoading}
-                      gameMode={settings.gameMode}
-                      cardSet={settings.cardSet}
-                      currentCard={score.currentCard}
-                      setForceSwipe={setForceSwipe}
-                    />
-                  );
-                })}
+        {cardsQueue.length > 0 &&
+          cardsQueue
+            .slice(-NUMBER_OF_CARDS_TO_SHOW)
+            .map((card, index, array) => {
+              const {
+                word,
+                image,
+                category,
+                tabooWords,
+                isCardBack,
+                isLoading = false
+              } = card;
+              return (
+                <Card
+                  cardIndex={array.length - index} //1-N, 1 - is upper
+                  onSwipeLeft={onSkip()}
+                  onSwipeRight={onAnswer(true)}
+                  onSwipeStart={onStart()}
+                  key={word + category}
+                  word={word}
+                  image={image}
+                  category={category}
+                  tabooWords={tabooWords}
+                  isCardBack={isCardBack}
+                  isFreePlay={gameState.isFreePlay}
+                  isLoading={isLoading}
+                  gameMode={settings.gameMode}
+                  cardSet={settings.cardSet}
+                  currentCard={score.currentCard}
+                  setForceSwipe={setForceSwipe}
+                />
+              );
+            })}
       </div>
       {renderButtons(props)}
       {renderMenu(props)}

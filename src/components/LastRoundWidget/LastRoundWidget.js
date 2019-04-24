@@ -1,8 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 import Indicator from "components/Indicator";
-import { secToTimeString, roundEfficiency } from "utils/Helpers.js";
+import Icon from "components/Icon";
 
+import { secToTimeString } from "utils/Helpers.js";
 import "./LastRoundWidget.css";
 
 const LastRoundWidget = ({ stats, style, button }) => {
@@ -14,8 +15,7 @@ const LastRoundWidget = ({ stats, style, button }) => {
         "LastRoundWidget--extraSpaceForButton": button
       })}
     >
-      {style === "stats" && <h2>Last Round!</h2>}
-      {console.log(stats)}
+      {style === "stats" && <h2>Last Round</h2>}
       <div className="LastRoundWidget-topLine">
         <Indicator title="hits" value={stats.right} />
         <div className="LastRoundWidget-for">for</div>
@@ -25,15 +25,12 @@ const LastRoundWidget = ({ stats, style, button }) => {
       </div>
       <div className="LastRoundWidget-bottomLine">
         <Indicator
+          highlighter={stats.bestScore ? <Icon name="Highlight" /> : null}
           title="efficiency"
-          value={`${roundEfficiency(stats)} hits/min`}
+          value={`${stats.efficiency} hits/min`}
         />
       </div>
-      {button &&
-      <div class="LastRoundWidget-fab">
-        {button}
-      </div>
-      }
+      {button && <div class="LastRoundWidget-fab">{button}</div>}
     </div>
   );
 };

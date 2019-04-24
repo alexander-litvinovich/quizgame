@@ -26,7 +26,6 @@ const CheckMark = () => {
 };
 
 const Checkbox = ({
-  onWhenClick = () => {},
   onWhenChange = () => {},
   label,
   checked,

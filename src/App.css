@@ -1,21 +1,31 @@
 :root {
-  --blue: #31AFF6;
-  --green: #31F68C;
-  --magenta: #9431F6;
-  --red: #F63155;
+  --blue: #31aff6;
+  --green: #31f68c;
+  --magenta: #9431f6;
+  --red: #f63155;
 
   --black: #000;
   --white: #fff;
+
+  --gold: #ffc36a;
 }
 
-h1, h2{
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2 {
   font: inherit;
   margin: 0;
   padding: 0;
-}
-
-body{
-  overflow-x: hidden;
 }
 
 .App {
@@ -24,8 +34,11 @@ body{
   min-height: 100vh;
 }
 
-
-::selection{
+::selection {
   background: none;
   color: inherit;
+}
+
+div {
+  box-sizing: border-box;
 }

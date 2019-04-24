@@ -99,8 +99,8 @@ export class Card extends Component {
           <div className="CardBack">
             <div className="CardBack-inner">
               <div className="CardBack-pattern">
-                <h2 className="CardBack-title">Get Ready and&nbsp;swipe!</h2>
-                <label className="CardBack-subTitle"> or push the button at bottom to start </label>
+                <h2 className="CardBack-title">Swipe to&nbsp;start!</h2>
+                <label className="CardBack-subTitle"> or tap the button below </label>
               </div>
             </div>
           </div>

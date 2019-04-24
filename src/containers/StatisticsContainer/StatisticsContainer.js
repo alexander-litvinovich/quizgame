@@ -6,11 +6,13 @@ import StatisticsLayout from "layouts/StatisticsLayout";
 class StatisticsContainer extends Component {
   constructor(props) {
     super(props);
-    const rounds = GameStore.loadStats();
-    const lastRound = rounds.pop();
+    let rounds = GameStore.loadStats();
+    const lastRound = rounds.shift();
+    if (props.roundEnd) rounds = rounds.slice(0, 5);
     this.state = {
       rounds: rounds,
-      lastRound: lastRound
+      lastRound: lastRound,
+      roundEnd: props.roundEnd
     };
   }
 
@@ -20,13 +22,16 @@ class StatisticsContainer extends Component {
   };
 
   render() {
-    const { lastRound, rounds } = this.state;
+    const { lastRound, rounds, roundEnd } = this.state;
     return (
       <StatisticsLayout
+        roundEnd={roundEnd}
         lastRound={lastRound}
         rounds={rounds}
-        clearStats={this.clearStats}
-        returnToMenu={{link:"/Menu"}}
+        clearStats={{ onClick: this.clearStats }}
+        returnToMenu={{ link: "/Menu" }}
+        nextRoundButton={{ link: "/Game" }}
+        goToStats={{ link: "/Statistics" }}
       />
     );
   }

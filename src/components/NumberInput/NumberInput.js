@@ -92,6 +92,7 @@ class NumberInput extends Component {
               value={value}
               onInput={this.onInput}
               onKeyDown={this.onKeyDown}
+              disabled={true}
             />
           </div>
         </div>

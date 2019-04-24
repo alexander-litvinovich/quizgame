@@ -2,8 +2,8 @@
   "dictionaries": {
 
     "urbandictionary" : {
-      "title": "Urban Dictionary",
-      "uri": "datamock.json"
+      "title": "101 Popular",
+      "uri": "101popular.json"
     },
     "sworewords" : {
       "title": "Swore words",

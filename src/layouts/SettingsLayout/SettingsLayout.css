@@ -5,38 +5,37 @@
   padding-bottom: 10px;
 }
 
-.SettingsLayout-block{
+.SettingsLayout-block {
   margin: 10px 0;
 }
 
-.SettingsLayout-label{
+.SettingsLayout-label {
   margin-bottom: 10px;
   text-align: center;
   display: block;
 }
 
-.SettingsLayout-tip{
+.SettingsLayout-tip {
   opacity: 0.7;
 }
 
-.DictsSelector{
+.DictsSelector {
   max-width: 320px;
   min-width: 280px;
-  box-sizing: border-box;
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
 }
 
-.DictsSelector-preloader{
+.DictsSelector-preloader {
   padding: 10px;
 }
-.DictsSelector-preloader-text{
+.DictsSelector-preloader-text {
   margin-top: 10px;
   font-size: 14px;
 }
 
-.DictsSelector-dict + .DictsSelector-dict{
+.DictsSelector-dict + .DictsSelector-dict {
   margin-top: 10px;
 }

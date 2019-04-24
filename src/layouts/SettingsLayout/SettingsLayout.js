@@ -7,8 +7,7 @@ import RoundButton from "components/RoundButton";
 import Radio from "components/Radio";
 import Checkbox from "components/Checkbox";
 import NumberInput from "components/NumberInput";
-
-//let checkboxTest = true;
+import Button from "components/Button";
 
 const SettingsLayout = ({
   gameModeOptions,
@@ -24,7 +23,8 @@ const SettingsLayout = ({
 
   dictionariesList,
 
-  returnToMenu
+  returnToMenu,
+  killCache
 }) => {
   return (
     <div className="SettingsLayout">
@@ -68,15 +68,13 @@ const SettingsLayout = ({
               max={10}
               value={settings.cardSet}
               onWhenChange={onChangeSettings("cardSet")}
-
-              //onWhenChange={alert}
             />
           </>
         )}
       </div>
 
       <div className="SettingsLayout-block">
-        <label className="SettingsLayout-label">vocabluaries:</label>
+        <label className="SettingsLayout-label">dictionaries:</label>
         <div className="DictsSelector">
           {isDictListLoaded ? (
             <>
@@ -98,6 +96,13 @@ const SettingsLayout = ({
             </div>
           )}
         </div>
+      </div>
+
+      <div className="SettingsLayout-block">
+        <label className="SettingsLayout-layout">
+          for debugging purpouses:
+        </label>
+        <Button color="red" title="Kill cache" subTitle="Will be removed in public version" {...killCache} />
       </div>
 
       <div className="SettingsLayout-block">

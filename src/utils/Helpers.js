@@ -7,7 +7,7 @@ export const secToTimeString = input => {
   }`;
 };
 
-export const roundEfficiency = ({ right = 0, time = 0 }) => {
+export const roundEfficiency = (right = 0, time = 0) => {
   let efficiency = time > 0 ? right / (time / 60) : 0;
 
   if (efficiency === 0) return efficiency.toFixed(0);

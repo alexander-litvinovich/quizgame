@@ -7,11 +7,6 @@ class Dictionary {
   _list = {};
   _dictionaries = {};
 
-  constructor() {
-    //console.log("Dict created");
-    //console.log(this.list());
-  }
-
   _storeDict(dictionaryId, dict) {
     const dicts = JSON.parse(localStorage.getItem(DICTIONARY_CACHE_KEY)) || {};
     dicts[dictionaryId] = dict;
@@ -38,7 +33,6 @@ class Dictionary {
     console.log(cache);
 
     return !!cache;
-    //return true;
   }
 
   isDictCached(dictionaryId) {

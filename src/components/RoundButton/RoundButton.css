@@ -9,6 +9,14 @@
   color: var(--white);
   cursor: pointer;
   box-shadow: 0 5px 10px RGBA(0, 0, 0, 0.125);
+
+  transition-property: box-shadow;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.RoundButton:focus{
+  outline: none;
 }
 
 .RoundButton ::selection {
@@ -25,6 +33,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.RoundButton:hover .RoundButton-child {
+  transform: scale(1.2);
+}
+
+.RoundButton:hover {
+  box-shadow: 0 3px 7px RGBA(0, 0, 0, 0.25);
 }
 
 .RoundButton--colorRed {
@@ -52,6 +72,7 @@
   color: var(--black);
 }
 
+.RoundButton--styleGhost:hover,
 .RoundButton--styleGhost {
   background: transparent;
   border: none;

@@ -40,7 +40,7 @@ class SettingsContainer extends Component {
     if (this.dictFallback()) {
       let fallback = {};
       Object.keys(dictList).forEach(element => {
-        fallback[element]=true;
+        fallback[element] = true;
       });
 
       this.setState({ dicts: fallback }, () => {
@@ -89,6 +89,25 @@ class SettingsContainer extends Component {
     return !Object.keys(dicts).reduce((prev, cur) => prev || dicts[cur], false);
   };
 
+  killCache = async () => {
+    GameStore.unsetSettings();
+    let dictList;
+    try {
+      dictList = await Dictionary.list(true);
+    } catch (error) {
+      return console.error("Error on fetching dictionaries list", error);
+    }
+
+    try {
+      await Object.keys(dictList).forEach(element => {
+        Dictionary.get(element, true);
+      });
+    } catch (error) {
+      return console.error("Error on fetching dictionaries", error);
+    }
+  };
+
+
   render() {
     const { settings, dicts, dictionariesList, isDictListLoaded } = this.state;
 
@@ -104,6 +123,7 @@ class SettingsContainer extends Component {
         isDictListLoaded={isDictListLoaded}
         dictFallback={this.dictFallback}
         returnToMenu={{ link: "/Menu" }}
+        killCache={{ onClick: this.killCache }}
       />
     );
   }

@@ -2,29 +2,16 @@ import React from "react";
 
 const IconMenu = () => (
   <svg
-    width="28"
-    height="24"
-    viewBox="0 0 28 24"
-    fill="none"
+    width="30"
+    height="30"
+    viewBox="0 0 30 30"
+    fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M26 2H2"
-      stroke="currentColor"
-      stroke-width="4"
-      stroke-linecap="round"
-    />
-    <path
-      d="M26 12H2"
-      stroke="currentColor"
-      stroke-width="4"
-      stroke-linecap="round"
-    />
-    <path
-      d="M26 22H2"
-      stroke="currentColor"
-      stroke-width="4"
-      stroke-linecap="round"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M29 5a2 2 0 0 0-2-2H3a2 2 0 1 0 0 4h24a2 2 0 0 0 2-2zm0 10a2 2 0 0 0-2-2H3a2 2 0 1 0 0 4h24a2 2 0 0 0 2-2zm-2 8a2 2 0 1 1 0 4H3a2 2 0 1 1 0-4h24z"
     />
   </svg>
 );

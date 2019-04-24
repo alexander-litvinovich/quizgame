@@ -1,11 +1,11 @@
-.Header{
-  height: 50px;
+.Header {
+  height: 60px;
   display: flex;
   justify-content: space-between;
   color: var(--white);
 }
 
-.Header.is-fixed{
+.Header.is-fixed {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,13 +13,13 @@
   z-index: 10;
 }
 
-.Header-RightButton{
+.Header-RightButton {
   order: 2;
 }
 
-.Header-LeftButton, .Header-RightButton{
+.Header-LeftButton,
+.Header-RightButton {
   display: flex;
-
   width: 50px;
   height: 100%;
   color: var(--white);
@@ -28,10 +28,9 @@
   padding: 0;
   align-items: center;
   justify-content: center;
-
 }
 
-.Header-Middle{
+.Header-Middle {
   max-width: 400px;
   display: flex;
   flex-direction: row;
@@ -40,7 +39,7 @@
   align-items: center;
 }
 
-.Header-Middle>h1{
-  font-size: 24px;
-  font-weight: 600;
+.Header-Middle > h1 {
+  font-size: 36px;
+  font-weight: 800;
 }
