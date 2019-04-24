@@ -1,9 +1,8 @@
 import React from "react";
-import "./RulesLayout.css";
 import Header from "components/Header";
 import Icon from "components/Icon";
 import RoundButton from "components/RoundButton";
-import Button from "components/Button";
+import "./RulesLayout.css";
 
 const RulesLayout = ({ returnToMenu }) => {
   return (
@@ -26,7 +25,7 @@ const RulesLayout = ({ returnToMenu }) => {
         </p>
         <p>
           If your explanation was enough good to right guess, congrats! You made
-          a hit — swipe card to the right and you get another card. If you can't
+          a hit — swipe card to the right and you will get another card. If you can't
           explain this word now or struggling with some troubles while
           explaining — swipe left to skip the card. If you say any of taboo
           words during explaining — you made a buzz — push the red button with
@@ -66,7 +65,7 @@ const RulesLayout = ({ returnToMenu }) => {
           <h3>Want to contribute?</h3>
           <p>
             Hi there! I need some help with dictionaries, spellchecking, code
-            review and getting Service Workers to work to do this game less
+            review and getting Service Workers to work and make the game less
             online-ish.
           </p>
           <p>
