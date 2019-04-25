@@ -1,0 +1,88 @@
+.ModalWindow{
+    display: none;
+}
+
+.ModalWindow.opened{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    z-index: 20;
+    justify-content: center;
+    align-items: center;
+}
+
+.ModalWindow-Content{
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    min-width: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25)
+}
+
+.ModalOverlay{
+    display: none;
+}
+
+.ModalOverlay.opened{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--black);
+    opacity: 0.7;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.ModalWindow-Header{
+    padding: 20px;
+    color: var(--white);
+}
+
+.ModalWindow-Header h2{
+    font-size: 36px;
+    font-weight: 800;
+}
+
+.ModalWindow-Text{
+    font-size: 14px;
+}
+
+.ModalWindow-SideBySide{
+  display: flex;
+  flex-direction: row;
+}
+
+.ModalWindow-SideBySide-Container{
+  width: 50%;
+}
+
+.ModalWindow-Header--colorBlue {
+    background: var(--blue);
+}
+
+.ModalWindow-Header--colorGreen{
+    background: var(--green);
+}
+
+.ModalWindow-Header--colorMagenta{
+    background: var(--magenta);
+}
+
+.ModalWindow-Header--colorRed{
+    background: var(--red);
+}
+
+.ModalWindow-Header--colorBlack{
+    background: var(--black);
+}

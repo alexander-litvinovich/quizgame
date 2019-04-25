@@ -1,16 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Card from './components/Card/Card';
+import React, { Component } from "react";
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+
+import SplashContainer from "containers/SplashContainer";
+import MenuContainer from "containers/MenuContainer";
+import StatisticsContainer from "containers/StatisticsContainer";
+import SettingsContainer from "containers/SettingsContainer";
+import RulesContainer from "containers/RulesContainer";
+import GameContainer from "containers/GameContainer";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Card question="Да или нет?" description="Дай четкий ответ!"></Card>
-        <Card question="Соль или сахар?" description="Дай четкий ответ!"></Card>
-        <Card question="Один или ноль?" description="Дай четкий ответ!"></Card>
-        <Card />
+        <Switch>
+          <Route path="/" exact component={SplashContainer} />
+          <Route
+            path="/Statistics"
+            component={() => <StatisticsContainer roundEnd={false} />}
+          />
+          <Route
+            path="/RoundEnd"
+            component={() => <StatisticsContainer roundEnd={true} />}
+          />
+          <Route path="/Menu" component={MenuContainer} />
+          <Route path="/Rules" component={RulesContainer} />
+          <Route path="/Settings" component={SettingsContainer} />
+          <Route path="/Game" exact component={GameContainer} />
+          <Route
+            path="/Game/Free"
+            exact
+            component={() => <GameContainer isFreePlay={true} />}
+          />
+        </Switch>
       </div>
     );
   }

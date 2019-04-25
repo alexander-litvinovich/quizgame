@@ -1,0 +1,105 @@
+:root {
+  --magenta-transparent: rgba(148, 49, 246, 0);
+}
+
+$partical-position-list: 20, 90, 80, 25, 18, 85, 75, 30, 20, 85, 75, 15;
+
+@keyframes spin-360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blinks {
+  0% {
+    transform: skew(15deg);
+  }
+
+  50% {
+    transform: skew(35deg);
+  }
+
+  100% {
+    transform: skew(15deg);
+  }
+}
+
+@keyframes cascade-down {
+  0% {
+    transform: translate(0, -50px);
+  }
+
+  100% {
+    transform: translate(0, 103vh);
+  }
+}
+
+.Particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate3d(0, 0, 0);
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.Particles:before {
+  content: "";
+  display: block;
+  background: linear-gradient(0deg, var(--magenta-transparent), var(--magenta));
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  position: absolute;
+  z-index: 1;
+}
+
+.Particles-box {
+  position: relative;
+  top: -30px;
+
+  animation: 15s cascade-down linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 12;
+  z-index: 0;
+
+  $elements: 10;
+  @for $i from 0 to $elements {
+    &:nth-child(#{$i}) {
+      left: nth($partical-position-list, $i + 1) * 1%;
+      animation-delay: #{$i * 1500}ms;
+
+      .Particles-part {
+        animation-delay: #{$i * 200}ms;
+      }
+    }
+  }
+}
+
+.Particles-part {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background-color: transparent;
+  animation: spin-360 5000ms infinite linear;
+}
+
+.Particles-part:after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 2px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  transform: skew(15deg);
+  background: var(--gold);
+  animation: blinks 1000ms infinite linear;
+}
